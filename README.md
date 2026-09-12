@@ -1,1 +1,1 @@
-# AI-RedTeaming
+# AI Red Teaming
