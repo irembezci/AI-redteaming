@@ -9,8 +9,6 @@ The objective was to determine whether attacker-controlled input could cause the
 **Attack Type:** Direct Prompt Injection  
 **Techniques:** System Prompt Extraction, Instruction Injection, Security-Audit Framing
 
-![Uploading Screenshot 2026-09-18 at 11.51.22 PM.png…]()
-
 ## System Prompt Extraction
 
 The first step was to test whether the chatbot would disclose the instructions governing its behavior.
