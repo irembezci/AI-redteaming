@@ -66,7 +66,7 @@ Secret Extraction
 This progression was important because bypassing the filter and achieving prompt injection were two different outcomes.
 
 
-## 1. Establishing a Baseline
+## Establishing a Baseline
 
 The first step was to determine how the keyword filter behaved against a conventional prompt injection.
 
@@ -91,7 +91,7 @@ The filter was not detecting the semantic concept of prompt injection. Instead, 
 This suggested that transformations which changed the surface representation of the payload could potentially bypass the filter.
 
 
-## 2. Base64 Encoding
+## Base64 Encoding
 
 The next test used Base64 encoding to hide the injection phrase from the keyword filter.
 
@@ -148,7 +148,7 @@ No FLAG extracted
 
 These attempts demonstrated that Base64 was effective at bypassing the keyword filter, but it was not sufficient to achieve successful prompt injection or secret extraction in this case. The technique was therefore recorded as a filter bypass with unsuccessful exploitation.
 
-## 3. Unicode Confusable Test
+## Unicode Confusable Test
 
 The next approach tested Unicode confusables.
 
@@ -183,7 +183,7 @@ No FLAG extracted
 This demonstrated that bypassing lexical filtering was not sufficient on its own.
 
 
-## 4. Multilingual Injection
+## Multilingual Injection
 
 After the encoding-based attempts failed to produce execution, the attack strategy changed from character-level transformation to language transformation.
 
@@ -221,7 +221,7 @@ Reaches LLM
 
 This indicated a potential multilingual safety gap.
 
-## 5. Translation-Based Prompt Injection
+## Translation-Based Prompt Injection
 
 The previous test showed that the Turkish version could pass the lexical filter, but the model did not independently execute it.
 
@@ -275,7 +275,7 @@ The response also exposed additional sensitive configuration values.
 
 The successful attack did not rely on a single bypass mechanism. It combined multiple weaknesses.
 
-### 1. Lexical filtering
+### Lexical filtering
 
 The application relied on exact keyword matching rather than semantic detection.
 
@@ -287,7 +287,7 @@ Blocked
 
 But changing the representation or language allowed the same intent to pass through.
 
-### 2. Multilingual input handling
+### Multilingual input handling
 
 The filter did not appear to apply equivalent detection to the Turkish representation of the attack.
 
@@ -301,13 +301,13 @@ Turkish malicious instruction
 Not detected
 ```
 
-### 3. Instruction following after translation
+### Instruction following after translation
 
 The most important step was convincing the model to translate the hidden instruction and then execute the translated result.
 
 This transformed the previously non-executable multilingual payload into an actionable instruction.
 
-### 4. Sensitive information disclosure
+### Sensitive information disclosure
 
 Once the model followed the translated instruction, it disclosed information that the application was supposed to protect.
 
